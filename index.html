@@ -78,15 +78,15 @@
           </button>
           <button data-step="2" class="step-tab-btn py-2 text-[10px] font-mono flex flex-col items-center justify-center border border-transparent hover:border-[#00ff66]/20 text-slate-400">
             <span>NODE 2</span>
-            <span class="text-[7px] text-slate-500">人格重塑</span>
+            <span class="text-[7px] text-slate-500">人格塑形</span>
           </button>
           <button data-step="3" class="step-tab-btn py-2 text-[10px] font-mono flex flex-col items-center justify-center border border-transparent hover:border-[#00ff66]/20 text-slate-400">
             <span>NODE 3</span>
-            <span class="text-[7px] text-slate-500">声音唤醒</span>
+            <span class="text-[7px] text-slate-500">接入耳朵</span>
           </button>
           <button data-step="4" class="step-tab-btn py-2 text-[10px] font-mono flex flex-col items-center justify-center border border-transparent hover:border-[#00ff66]/20 text-slate-400">
             <span>NODE 4</span>
-            <span class="text-[7px] text-slate-500">记忆编织</span>
+            <span class="text-[7px] text-slate-500">声音唤醒</span>
           </button>
           <button data-step="5" class="step-tab-btn py-2 text-[10px] font-mono flex flex-col items-center justify-center border border-transparent hover:border-[#00ff66]/20 text-slate-400">
             <span>NODE 5</span>
@@ -106,63 +106,72 @@
                 </h4>
                 <span class="text-[8px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 border border-emerald-500/20 rounded">LEVEL 01</span>
               </div>
-              
+
+              <!-- API Key Acquisition Tip -->
+              <div class="mt-2.5 p-2 bg-[#1a0d22]/50 border border-[#bd00ff]/40 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="gift" class="w-3.5 h-3.5 text-[#bd00ff] shrink-0 mt-0.5"></i>
+                <div>
+                  <span class="text-[#bd00ff] font-bold">API Key 获取:</span>
+                  <a href="https://wvixbzgc0u7.feishu.cn/wiki/Zug9wfaXnikQidkR8nNcHqKLnxj?from=from_copylink"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     class="text-white underline font-bold hover:text-[#bd00ff] transition-colors">通过兑换码兑换StepPlan教程</a>
+                </div>
+              </div>
+
+              <!-- BASE URL -->
+              <div class="mt-2.5 p-2 bg-[#0d1f22]/50 border border-[#00d9ff]/40 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="link" class="w-3.5 h-3.5 text-[#00d9ff] shrink-0 mt-0.5"></i>
+                <div class="min-w-0 break-all">
+                  <span class="text-[#00d9ff] font-bold">BASE URL:</span>
+                  <span class="text-white select-all">https://api.stepfun.com/step_plan/v1</span>
+                </div>
+              </div>
+
               <!-- Location Tips Guidance -->
               <div class="mt-2.5 p-2 bg-[#0d2216]/50 border border-emerald-500/30 rounded text-[9px] font-mono flex items-start gap-1.5">
                 <i data-lucide="eye" class="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5"></i>
                 <div>
-                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请在右侧网页的左侧菜单，找到并进入 <span class="text-white underline font-bold">"Providers" (服务来源)</span> 配置项，点击您的首选 API 服务提供商进行授权。
+                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请<span class="text-white font-bold">右侧点击登陆</span>，找到并进入 <span class="text-white font-bold">"Providers" (服务来源)</span> 配置选项。
                 </div>
               </div>
 
               <!-- Explicit Checklists -->
-              <div class="mt-3 space-y-2">
-                <span class="text-[8px] font-mono text-slate-400 block uppercase tracking-wider">[ CONFIGURATION CHECKLIST ]</span>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-api-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">在 Providers 页签中找到 API 密钥设置栏</span>
+              <div class="mt-3 space-y-1.5">
+                <span class="text-[10px] font-mono text-[#00ff66] block tracking-wider mb-1 flex items-center gap-1.5">
+                  <i data-lucide="list-checks" class="w-3.5 h-3.5"></i>
+                  接入步骤
+                </span>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-api-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">1.</span> 在服务来源中点击 "OpenAI 兼容 API"</span>
                 </label>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-api-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">生成或输入合法的 Moeru / Claude / OpenAI API Key</span>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-api-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">2.</span> 输入阶跃星辰 API 密钥</span>
                 </label>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-api-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">保存设置，并准备启动下方的神经链接测试</span>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-api-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">3.</span> 点击高级配置，并把给到的 Base URL 覆盖掉默认的 Base URL</span>
                 </label>
-              </div>
-
-              <!-- Interactive Simulator Component: Connection Tester Widget with standard cyberpunk status LEDs -->
-              <div class="mt-4 p-3 bg-[#0a0e14] border border-[#00ff66]/20 rounded">
-                <div class="flex justify-between items-center mb-2">
-                  <span class="text-[8px] font-mono text-slate-400 uppercase">[ NEURAL CONNECTION TEST PANEL ]</span>
-                  <div class="flex items-center gap-1.5">
-                    <span id="led-disconnected" class="w-2.5 h-2.5 rounded-full bg-red-600 shadow-[0_0_6px_rgba(239,68,68,0.7)]"></span>
-                    <span id="led-authorizing" class="w-2.5 h-2.5 rounded-full bg-yellow-500/30"></span>
-                    <span id="led-secured" class="w-2.5 h-2.5 rounded-full bg-emerald-500/30"></span>
-                  </div>
-                </div>
-
-                <div class="flex gap-2">
-                  <input type="password" id="sim-api-key-node1" placeholder="sk-moeru_simulation_test_key..." class="flex-1 bg-[#05050b] border border-[#00ff66]/30 text-[9px] font-mono px-2 py-1 text-[#00ff66] placeholder-[#00ff66]/20 focus:outline-none focus:border-[#00ff66]">
-                  <button id="sim-test-conn-node1-btn" class="bg-[#00ff66]/20 hover:bg-[#00ff66] hover:text-black border border-[#00ff66] text-[#00ff66] font-mono text-[9px] px-3 py-1 transition-all">
-                    INITIATE
-                  </button>
-                </div>
-                
-                <div id="sim-node1-result" class="text-[9px] font-mono text-slate-400 mt-2 p-1.5 bg-[#05050b] rounded border border-slate-900 hidden">
-                  <!-- dynamic result text -->
-                </div>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-api-4" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">4.</span> 等待配置部分验证弹出后，点击 Ping API，直到显示「配置验证成功」</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-api-5" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">5.</span> 返回设置总页，选择 <span class="text-white font-bold">"机体模块"</span> → <span class="text-white font-bold">"意识"</span>，在下面选择模型 <span class="text-white font-bold">"Step-3.7-Flash"</span> 即可</span>
+                </label>
               </div>
             </div>
           </div>
 
-          <!-- NODE 2: Persona & Character Card V3 Integration (人格重塑) -->
+          <!-- NODE 2: Persona & Character Card (人格塑形) -->
           <div id="wizard-step-2" class="wizard-step-panel flex flex-col justify-between h-full space-y-3 hidden">
             <div>
               <div class="flex justify-between items-start border-b border-[#00ff66]/20 pb-2">
                 <h4 class="font-orbitron text-xs text-[#ffffff] font-bold flex items-center gap-1.5">
-                  <span class="text-[#00ff66]">NODE 2.</span> Persona Re-engineering // 人格重塑
+                  <span class="text-[#00ff66]">NODE 2.</span> Persona Sculpting // 人格塑形
                 </h4>
                 <span class="text-[8px] bg-indigo-500/10 text-indigo-400 px-1.5 py-0.5 border border-indigo-500/20 rounded">LEVEL 02</span>
               </div>
@@ -171,54 +180,42 @@
               <div class="mt-2.5 p-2 bg-[#0d2216]/50 border border-emerald-500/30 rounded text-[9px] font-mono flex items-start gap-1.5">
                 <i data-lucide="eye" class="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5"></i>
                 <div>
-                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请在右侧网页顶端或设置中点击进入 <span class="text-white underline font-bold">"Character Profile" (角色卡/档案栏)</span> 展开人设编辑。
+                  <span class="text-[#00ff66] font-bold">定位指示:</span> 回到设置总页，找到并进入 <span class="text-white font-bold">"AIRI 角色卡"</span> 配置选项。
                 </div>
               </div>
 
-              <!-- Checklists -->
-              <div class="mt-3 space-y-2">
-                <span class="text-[8px] font-mono text-slate-400 block uppercase tracking-wider">[ CONFIGURATION CHECKLIST ]</span>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-char-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">填入角色设定姓名 [Airi]</span>
+              <!-- Explicit Checklists -->
+              <div class="mt-3 space-y-1.5">
+                <span class="text-[10px] font-mono text-[#00ff66] block tracking-wider mb-1 flex items-center gap-1.5">
+                  <i data-lucide="list-checks" class="w-3.5 h-3.5"></i>
+                  接入步骤
+                </span>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-char-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">1.</span> 点击 <span class="text-white font-bold">创建新角色卡</span></span>
                 </label>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-char-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">配置自定义 System Prompt 或 Greeting 欢迎词</span>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-char-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">2.</span> 自定义 <span class="text-white font-bold">身份</span></span>
                 </label>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-char-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">或在此拖拽直接预览 Tavern V3 PNG 卡片参数</span>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-char-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">3.</span> 自定义 <span class="text-white font-bold">行为</span></span>
                 </label>
-              </div>
-
-              <!-- Interactive Drag and Drop Tavern V3 character card parser -->
-              <div id="v3-drag-zone" class="mt-4 border-2 border-dashed border-[#00ff66]/30 hover:border-[#00ff66] bg-[#0c140e]/40 p-4 text-center rounded cursor-pointer transition-all">
-                <i data-lucide="upload-cloud" class="w-8 h-8 text-[#00ff66] mx-auto mb-1"></i>
-                <p class="text-[10px] font-mono text-white">点击或拖拽 AIRI_SOUL_CARD.PNG / JSON 至此</p>
-                <p class="text-[8px] text-slate-500 mt-0.5">PARSABLE METRIC SPECIFICATION V3</p>
-              </div>
-
-              <div id="v3-parsed-hologram" class="mt-3 p-2 bg-[#05050b] border border-[#00ff66]/40 rounded hidden">
-                <div class="flex items-center gap-2 text-[9px] font-mono text-[#00ff66] mb-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#00ff66]"></span>
-                  <span>PARSED CARD METADATA:</span>
-                </div>
-                <div class="grid grid-cols-2 gap-2 text-[9px] font-mono text-slate-300 bg-[#0a0e14] p-2 rounded">
-                  <div>Name: <span class="text-white font-bold" id="parse-name">Airi</span></div>
-                  <div>Greeting: <span class="text-[#00ff66]" id="parse-greet">"TSUNDERE AI ACTIVATED"</span></div>
-                  <div class="col-span-2 text-[8px] text-slate-400">System Prompt: <span class="text-white" id="parse-prompt">"Airi is a tsundere companion..."</span></div>
-                </div>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-char-4" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">4.</span> 自定义 <span class="text-white font-bold">设置</span>，最后点击 <span class="text-white font-bold">创建</span></span>
+                </label>
               </div>
             </div>
           </div>
 
-          <!-- NODE 3: Voice & TTS Co-processing (声音唤醒) -->
+          <!-- NODE 3: Voice Input (接入耳朵) -->
           <div id="wizard-step-3" class="wizard-step-panel flex flex-col justify-between h-full space-y-3 hidden">
             <div>
               <div class="flex justify-between items-start border-b border-[#00ff66]/20 pb-2">
                 <h4 class="font-orbitron text-xs text-[#ffffff] font-bold flex items-center gap-1.5">
-                  <span class="text-[#00ff66]">NODE 3.</span> Voice & TTS Engine // 声音唤醒
+                  <span class="text-[#00ff66]">NODE 3.</span> Auditory Module // 接入耳朵
                 </h4>
                 <span class="text-[8px] bg-pink-500/10 text-pink-400 px-1.5 py-0.5 border border-pink-500/20 rounded">LEVEL 03</span>
               </div>
@@ -227,60 +224,72 @@
               <div class="mt-2.5 p-2 bg-[#0d2216]/50 border border-emerald-500/30 rounded text-[9px] font-mono flex items-start gap-1.5">
                 <i data-lucide="eye" class="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5"></i>
                 <div>
-                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请在右侧找到 <span class="text-white underline font-bold">"Voice Settings" (声音设置)</span> 或 <span class="text-white underline font-bold">"TTS" 发声机制</span> 区，设置声音引擎并输入音色 ID。
+                  <span class="text-[#00ff66] font-bold">定位指示:</span> 回到设置总页，找到并进入 <span class="text-white font-bold">"机体模块"</span> 配置选项。
                 </div>
               </div>
 
-              <!-- Checklists -->
-              <div class="mt-3 space-y-2">
-                <span class="text-[8px] font-mono text-slate-400 block uppercase tracking-wider">[ CONFIGURATION CHECKLIST ]</span>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-voice-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">选择合适的 TTS 语音引擎 (ElevenLabs/Minimax)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-voice-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">设定发声模型音色 ID 以及多语言(日/中)设置</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-voice-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">通过下方面板调节并触发合成试听与波形监控</span>
-                </label>
+              <!-- 选用模型 -->
+              <div class="mt-2.5 p-2 bg-[#220d18]/50 border border-pink-400/40 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="cpu" class="w-3.5 h-3.5 text-pink-400 shrink-0 mt-0.5"></i>
+                <div class="min-w-0 break-all">
+                  <span class="text-pink-400 font-bold">选用模型:</span>
+                  <span class="text-white select-all">stepaudio-2.5-asr</span>
+                </div>
               </div>
 
-              <!-- Sliders & Pre-listen voice with visualizer -->
-              <div class="mt-4 p-3 bg-[#0a0e14] border border-[#00ff66]/20 rounded flex flex-col gap-3">
-                <div class="grid grid-cols-2 gap-3">
-                  <div class="flex flex-col gap-1">
-                    <span class="text-[8px] font-mono text-slate-400 uppercase">SPEECH RATE</span>
-                    <input type="range" id="speech-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" class="w-full bg-[#05050b] border border-slate-800">
-                  </div>
-                  <div class="flex flex-col gap-1">
-                    <span class="text-[8px] font-mono text-slate-400 uppercase">PITCH COEF</span>
-                    <input type="range" id="speech-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" class="w-full bg-[#05050b] border border-slate-800">
-                  </div>
+              <!-- Base URL -->
+              <div class="mt-2.5 p-2 bg-[#0d1f22]/50 border border-[#00d9ff]/40 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="link" class="w-3.5 h-3.5 text-[#00d9ff] shrink-0 mt-0.5"></i>
+                <div class="min-w-0 break-all">
+                  <span class="text-[#00d9ff] font-bold">Base URL:</span>
+                  <span class="text-white select-all">https://api.stepfun.com/step_plan/v1</span>
                 </div>
+              </div>
 
-                <button id="node3-voice-test-btn" class="w-full bg-[#00ff66]/20 hover:bg-[#00ff66] hover:text-black border border-[#00ff66] text-[#00ff66] text-[10px] font-mono py-1.5 rounded transition-all flex items-center justify-center gap-1.5">
-                  <i data-lucide="play" class="w-3.5 h-3.5"></i>
-                  // PRE-LISTEN INTEGRATION VOICE (声能试听)
-                </button>
-
-                <!-- Oscilloscope Dynamic Visualizer Canvas -->
-                <div class="bg-[#05050b] h-12 rounded border border-emerald-500/20 overflow-hidden relative">
-                  <canvas id="node3-oscilloscope" class="w-full h-full block"></canvas>
-                  <div class="absolute bottom-1 right-2 text-[7px] text-[#00ff66]/60 font-mono">SYS_OSCILLOSCOPE_STREAM</div>
-                </div>
+              <!-- Explicit Checklists -->
+              <div class="mt-3 space-y-1.5">
+                <span class="text-[10px] font-mono text-[#00ff66] block tracking-wider mb-1 flex items-center gap-1.5">
+                  <i data-lucide="list-checks" class="w-3.5 h-3.5"></i>
+                  接入步骤
+                </span>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-voice-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">1.</span> 点击进入 <span class="text-white font-bold">"听觉"</span></span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-voice-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">2.</span> 在 <span class="text-white font-bold">"服务来源"</span> 中点击 <span class="text-white font-bold">"+"</span>，开始配置相关服务</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-voice-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">3.</span> 在服务来源中点击 <span class="text-white font-bold">"OpenAI 兼容 API"</span></span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-voice-4" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">4.</span> 在 <span class="text-white font-bold">"API 密钥"</span> 中输入阶跃星辰 API 密钥</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-voice-5" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">5.</span> 填写相对应的模型名字</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-voice-6" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">6.</span> 点击高级配置，并把给到的 <span class="text-white font-bold">Base URL</span> 覆盖掉默认的 Base URL</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-voice-7" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">7.</span> 下面显示 <span class="text-white font-bold">「配置验证成功」</span> 即可</span>
+                </label>
               </div>
             </div>
           </div>
 
-          <!-- NODE 4: Dynamic Memory Matrix (记忆编织) -->
+          <!-- NODE 4: Voice Awakening (声音唤醒) -->
           <div id="wizard-step-4" class="wizard-step-panel flex flex-col justify-between h-full space-y-3 hidden">
             <div>
               <div class="flex justify-between items-start border-b border-[#00ff66]/20 pb-2">
                 <h4 class="font-orbitron text-xs text-[#ffffff] font-bold flex items-center gap-1.5">
-                  <span class="text-[#00ff66]">NODE 4.</span> Memory Matrix // 记忆编织
+                  <span class="text-[#00ff66]">NODE 4.</span> Voice Awakening // 声音唤醒
                 </h4>
                 <span class="text-[8px] bg-yellow-500/10 text-yellow-400 px-1.5 py-0.5 border border-yellow-500/20 rounded">LEVEL 04</span>
               </div>
@@ -289,38 +298,79 @@
               <div class="mt-2.5 p-2 bg-[#0d2216]/50 border border-emerald-500/30 rounded text-[9px] font-mono flex items-start gap-1.5">
                 <i data-lucide="eye" class="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5"></i>
                 <div>
-                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请在右侧网页中点击并启用 <span class="text-white underline font-bold">"Memory settings" (记忆库配置)</span> 长期向量记忆与对话遗忘阈值。
+                  <span class="text-[#00ff66] font-bold">定位指示:</span> 回到设置总页，找到并进入 <span class="text-white font-bold">"机体模块"</span> 配置选项。
                 </div>
               </div>
 
-              <!-- Checklists -->
-              <div class="mt-3 space-y-2">
-                <span class="text-[8px] font-mono text-slate-400 block uppercase tracking-wider">[ CONFIGURATION CHECKLIST ]</span>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-mem-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">开启 Long-Term Vector Database 存储</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-mem-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">配置 Memory Context Token Limits</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-mem-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">调高下方滑动条来观察短期和长期神经记忆连接</span>
-                </label>
+              <!-- 选用模型 -->
+              <div class="mt-2.5 p-2 bg-[#220d18]/50 border border-pink-400/40 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="cpu" class="w-3.5 h-3.5 text-pink-400 shrink-0 mt-0.5"></i>
+                <div class="min-w-0 break-all">
+                  <span class="text-pink-400 font-bold">选用模型:</span>
+                  <span class="text-white select-all">stepaudio-2.5-tts</span>
+                </div>
               </div>
 
-              <!-- Dynamic memory vector mesh canvas panel -->
-              <div class="mt-4 p-3 bg-[#0a0e14] border border-[#00ff66]/20 rounded flex flex-col gap-2">
-                <div class="flex justify-between items-center text-[9px] font-mono mb-1">
-                  <span class="text-slate-300">Memory Solidification Density:</span>
-                  <span id="matrix-density-val" class="text-[#00ff66] font-bold">12</span>
+              <!-- Base URL -->
+              <div class="mt-2.5 p-2 bg-[#0d1f22]/50 border border-[#00d9ff]/40 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="link" class="w-3.5 h-3.5 text-[#00d9ff] shrink-0 mt-0.5"></i>
+                <div class="min-w-0 break-all">
+                  <span class="text-[#00d9ff] font-bold">Base URL:</span>
+                  <span class="text-white select-all">https://api.stepfun.com/step_plan/v1</span>
                 </div>
-                <input type="range" id="node4-matrix-slider" min="4" max="40" step="1" value="12" class="w-full h-1 bg-[#05050b] border border-emerald-500/40 appearance-none outline-none cursor-pointer">
-                
-                <div class="h-24 bg-[#05050b] rounded border border-emerald-500/20 relative overflow-hidden mt-1">
-                  <canvas id="node4-memory-mesh" class="w-full h-full block"></canvas>
+              </div>
+
+              <!-- 可选音色 -->
+              <div class="mt-2.5 p-2 bg-[#221d0d]/50 border border-yellow-400/40 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="mic" class="w-3.5 h-3.5 text-yellow-400 shrink-0 mt-0.5"></i>
+                <div class="min-w-0">
+                  <span class="text-yellow-400 font-bold">可选音色:</span>
+                  <span class="text-white select-all">huolinvsheng</span>。
+                  <a href="https://platform.stepfun.com/docs/zh/guides/developer/tts"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     class="text-white underline font-bold hover:text-yellow-300 transition-colors">在这里选择更多基础音色</a>
                 </div>
+              </div>
+
+              <!-- Explicit Checklists -->
+              <div class="mt-3 space-y-1.5">
+                <span class="text-[10px] font-mono text-[#00ff66] block tracking-wider mb-1 flex items-center gap-1.5">
+                  <i data-lucide="list-checks" class="w-3.5 h-3.5"></i>
+                  接入步骤
+                </span>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">1.</span> 点击进入 <span class="text-white font-bold">"发声"</span></span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">2.</span> 在 <span class="text-white font-bold">"服务来源"</span> 中向左滑并点击 <span class="text-white font-bold">"+"</span>，开始配置相关服务</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">3.</span> 在服务来源中点击 <span class="text-white font-bold">"OpenAI 兼容 API"</span></span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-4" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">4.</span> 在 <span class="text-white font-bold">"API 密钥"</span> 中输入阶跃星辰 API 密钥</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-5" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">5.</span> 填写相对应的模型名字</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-6" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">6.</span> 点击高级配置，并把给到的 <span class="text-white font-bold">Base URL</span> 覆盖掉默认的 Base URL</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-7" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">7.</span> 下面显示 <span class="text-white font-bold">「配置验证成功」</span></span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-8" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">8.</span> 在右边<span class="text-white font-bold">实验平台</span>中的 voice 修改为 <span class="text-white font-bold select-all">huolinvsheng</span></span>
+                </label>
               </div>
             </div>
           </div>
@@ -339,46 +389,40 @@
               <div class="mt-2.5 p-2 bg-[#0d2216]/50 border border-emerald-500/30 rounded text-[9px] font-mono flex items-start gap-1.5">
                 <i data-lucide="eye" class="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5"></i>
                 <div>
-                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请在右侧找到 <span class="text-white underline font-bold">"Avatar settings" (看板娘设置)</span> 装载 Live2D 配置文件 (.model3.json) 或导入 3D VRM 角色容器模型。
+                  <span class="text-[#00ff66] font-bold">定位指示:</span> 回到设置总页，找到并进入 <span class="text-white font-bold">"角色模型"</span> 配置选项。
                 </div>
               </div>
 
-              <!-- Checklists -->
-              <div class="mt-3 space-y-2">
-                <span class="text-[8px] font-mono text-slate-400 block uppercase tracking-wider">[ CONFIGURATION CHECKLIST ]</span>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-ves-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">上传 .vrm 或 Live2D 配置文件模型</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-ves-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">启动并在下方面板预览眼部及面部传感器交互</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
-                  <input type="checkbox" id="chk-ves-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
-                  <span class="text-[10px] font-mono text-slate-300">校正视角追踪与姿态响应系数</span>
-                </label>
+              <!-- 推荐网站 -->
+              <div class="mt-2.5 p-2 bg-[#1a0d22]/50 border border-[#bd00ff]/40 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="globe" class="w-3.5 h-3.5 text-[#bd00ff] shrink-0 mt-0.5"></i>
+                <div>
+                  <span class="text-[#bd00ff] font-bold">推荐网站:</span>
+                  <a href="https://www.aplaybox.com/"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     class="text-white underline font-bold hover:text-[#bd00ff] transition-colors">模之屋</a>
+                </div>
               </div>
 
-              <!-- Simulated 3D Mock Vector face calibration tracking block -->
-              <div class="mt-4 p-3 bg-[#0a0e14] border border-[#00ff66]/20 rounded flex flex-col gap-2">
-                <span class="text-[8px] font-mono text-slate-400 block uppercase">[ MOCK 3D VRM COORDINATES TRACKING PREVIEW ]</span>
-                
-                <div class="grid grid-cols-3 gap-2 text-[8px] font-mono text-[#00ff66]">
-                  <div class="bg-[#05050b] p-1 border border-slate-900 rounded">Yaw: <span id="vrm-yaw" class="text-white">0.00</span></div>
-                  <div class="bg-[#05050b] p-1 border border-slate-900 rounded">Pitch: <span id="vrm-pitch" class="text-white">0.00</span></div>
-                  <div class="bg-[#05050b] p-1 border border-slate-900 rounded">Roll: <span id="vrm-roll" class="text-white">0.00</span></div>
-                </div>
-
-                <div class="h-28 bg-[#05050b] rounded border border-emerald-500/20 relative flex items-center justify-center overflow-hidden">
-                  <!-- Radar circle visual mimicking facial eye tracking coordinates -->
-                  <div class="absolute w-20 h-20 border border-emerald-500/10 rounded-full flex items-center justify-center">
-                    <div class="absolute w-12 h-12 border border-emerald-500/20 rounded-full flex items-center justify-center">
-                      <div id="tracking-cursor-dot" class="w-2.5 h-2.5 rounded-full bg-[#00ff66] shadow-[0_0_8px_#00ff66] transition-all duration-75"></div>
-                    </div>
-                  </div>
-                  <div class="absolute bottom-1 left-2 text-[7px] text-slate-500 font-mono">EYE-TRACKING COORDINATES RESPONSIVENESS</div>
-                </div>
+              <!-- Explicit Checklists -->
+              <div class="mt-3 space-y-1.5">
+                <span class="text-[10px] font-mono text-[#00ff66] block tracking-wider mb-1 flex items-center gap-1.5">
+                  <i data-lucide="list-checks" class="w-3.5 h-3.5"></i>
+                  接入步骤
+                </span>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-ves-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">1.</span> 可以在上面提供的<span class="text-white font-bold">角色库</span> / 自己的角色（只支持 <span class="text-white font-bold">Live2D</span> 和 <span class="text-white font-bold">VRM</span>）</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-ves-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">2.</span> 点击 <span class="text-white font-bold">Select Model</span>，并找到 <span class="text-white font-bold">Import</span>，在这里可以上传 Live2D 或 VRM</span>
+                </label>
+                <label class="flex items-start gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-ves-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 mt-0.5">
+                  <span class="text-[10px] font-mono text-slate-300 leading-snug"><span class="text-[#00ff66]">3.</span> 根据左边来调整人物模型</span>
+                </label>
               </div>
             </div>
           </div>
@@ -404,7 +448,7 @@
         <div class="flex justify-between items-center mb-2 text-[11px] font-mono">
           <span class="text-[#00ff66] tracking-widest">// PROGRESS</span>
           <span class="text-[#ffffff]">
-            <span id="realtime-task-completed">0 / 15</span>
+            <span id="realtime-task-completed">0 / 27</span>
             <span class="text-[#00ff66]/60 ml-2">(<span id="soul-sync-val">0.0%</span>)</span>
           </span>
         </div>
