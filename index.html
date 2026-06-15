@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PROJECT AIRI // CYBERNETIC COGNITIVE CONSOLE & ROADMAP</title>
+  <!-- Google Fonts: Orbitron & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Styled Overlap -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#05050b] text-[#ffffff] min-h-screen relative flex flex-col overflow-x-hidden select-none">
+
+  <!-- CRT scanline overlays and system grid -->
+  <div class="crt-overlay pointer-events-none"></div>
+  <div class="cyber-grid pointer-events-none"></div>
+
+  <!-- Audio Feedback & Sound Status Control -->
+  <div class="fixed top-2 right-4 z-50 flex items-center gap-3 bg-[#0e0d1a]/95 border border-[#00ff66]/40 px-3 py-1 text-[10px] font-mono rounded shadow-[0_0_10px_rgba(0,255,102,0.15)]">
+    <button id="toggle-sfx-btn" class="flex items-center gap-1 text-[#00ff66] hover:text-white transition-colors">
+      <i data-lucide="volume-2" id="sfx-icon" class="w-3.5 h-3.5"></i>
+      <span id="sfx-status-text">SFX: ON</span>
+    </button>
+    <span class="w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-pulse"></span>
+    <span class="text-[#00ff66] uppercase tracking-wider hidden sm:inline">Neural Link: Online</span>
+  </div>
+
+  <!-- Control Room Header -->
+  <header class="console-header border-b border-[#00ff66]/30 px-4 md:px-6 py-3 flex flex-col md:flex-row justify-between items-start md:items-center bg-[#0e0d1a]/95 backdrop-blur-md relative z-20 gap-3">
+    <div class="flex items-center space-x-3">
+      <div class="w-3 h-3 bg-[#00ff66] rounded-full animate-ping absolute"></div>
+      <div class="w-3 h-3 bg-[#00ff66] rounded-full relative"></div>
+      <div>
+        <h1 class="font-orbitron tracking-widest text-[#00ff66] font-extrabold text-sm md:text-lg neon-text-green flex items-center gap-2">
+          AIRI_OS <span class="text-[#ffffff] text-xs font-normal hidden sm:inline">// SYSTEM PROTOCOL ENGINE</span>
+        </h1>
+      </div>
+    </div>
+    
+    <div class="welcome-banner text-xs font-mono text-[#00ff66]/80 overflow-hidden w-full md:w-1/2 max-h-[24px]">
+      <span id="typewriter-text"></span><span class="terminal-cursor"></span>
+    </div>
+
+    <div class="system-time text-right font-mono text-[10px] text-[#00ff66] border-l border-[#00ff66]/30 pl-4 hidden lg:block" id="live-clock">
+      UTC 00:00:00 // LOCAL 00:00:00
+    </div>
+  </header>
+
+  <!-- Master Dual-Track Console Grid -->
+  <main class="console-grid flex-1 p-3 md:p-4 grid grid-cols-1 lg:grid-cols-12 gap-4 relative z-10 overflow-y-auto lg:overflow-hidden h-[calc(100vh-65px)]">
+    
+    <!-- LEFT COLUMN: COGNITIVE DEPLOYMENT WIZARD (5/12) -->
+    <section class="lg:col-span-5 flex flex-col space-y-4 overflow-y-auto custom-scrollbar pr-1 pb-4">
+      
+      <!-- Interactive Guidance Hub -->
+      <div class="cyber-panel p-4 relative flex flex-col overflow-hidden" style="--corner: 20px;">
+        <div class="absolute top-2 right-4 text-[9px] text-[#00ff66] font-mono tracking-widest bg-[#05050b] px-2 border border-[#00ff66]/30 z-30">
+          CORE_GUIDE_CHAMBER
+        </div>
+
+        <div class="grid grid-cols-3 gap-3 mt-4">
+          <!-- Guide Avatar view -->
+          <div class="col-span-1 relative border border-[#00ff66]/40 bg-[#060514] aspect-square rounded-sm overflow-hidden flex items-center justify-center">
+            <div class="holo-grid-lines pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0e0d1a] via-transparent to-[#00ff66]/10 z-10 pointer-events-none"></div>
+            <img id="holo-airi-image"
+                 src="assets/47b6a1eba1641ed0_airi_vtuber_character_illustration_index_0.jpeg" 
+                 alt="Airi Guide Avatar" 
+                 class="w-[90%] h-[90%] object-cover rounded shadow-[0_0_15px_rgba(0,255,102,0.3)] filter contrast-125 saturate-125 transition-transform duration-500 hover:scale-110">
+            <div class="holo-scanner-sweep absolute w-full h-[3px] bg-gradient-to-b from-transparent via-[#00ff66] to-transparent shadow-[0_0_8px_#00ff66] z-20 left-0"></div>
+          </div>
+
+          <!-- Dialog bubble with localized actions -->
+          <div class="col-span-2 flex flex-col justify-between">
+            <div class="bg-[#05050b] border border-[#00ff66]/30 rounded p-2.5 relative flex-1 flex flex-col justify-between">
+              <p id="airi-speech-bubble" class="text-[11px] font-mono text-[#00ff66] leading-relaxed italic">
+                "主控官，请在右侧 Providers 中配置 API 服务，Airi 正在等待被唤醒..."
+              </p>
+              
+              <div class="flex items-center justify-between mt-2 pt-2 border-t border-[#00ff66]/20">
+                <button id="airi-play-voice-btn" class="flex items-center gap-1.5 text-[10px] font-mono text-[#ffffff] bg-[#00ff66]/20 hover:bg-[#00ff66]/45 px-2 py-0.5 border border-[#00ff66]/40 rounded transition-colors">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#00ff66]"></i>
+                  <span>[ 触发语音合成 ]</span>
+                </button>
+                <div class="speech-amplitude-bar flex items-end gap-[2px] h-3.5" id="speech-wave-indicator">
+                  <span class="w-[2px] h-1.5 bg-[#00ff66] rounded-full"></span>
+                  <span class="w-[2px] h-2.5 bg-[#00ff66] rounded-full"></span>
+                  <span class="w-[2px] h-3.5 bg-[#00ff66] rounded-full"></span>
+                  <span class="w-[2px] h-2 bg-[#00ff66] rounded-full"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cybernetic Tutorial Steps Selector Panel -->
+      <div class="cyber-panel p-4 flex flex-col" style="--corner: 15px;">
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-[11px] font-mono text-[#00ff66] tracking-widest flex items-center gap-1.5">
+            <i data-lucide="compass" class="w-4 h-4 text-[#00ff66]"></i>
+            COGNITIVE REALIZATION WIZARD
+          </span>
+          <span class="text-[9px] font-mono text-[#00ff66]/60" id="step-count-hud">NODE: 1/5</span>
+        </div>
+
+        <!-- Horizontal Road Map Navigation Nodes -->
+        <div class="grid grid-cols-5 gap-1 bg-[#05050b] p-1 border border-[#00ff66]/20 rounded mb-4" id="tutorial-steps-bar">
+          <button data-step="1" class="step-tab-btn active py-2 text-[10px] font-mono flex flex-col items-center justify-center border border-[#00ff66]/40 bg-[#00ff66]/10 text-[#00ff66]">
+            <span>NODE 1</span>
+            <span class="text-[7px] text-[#ffffff]/60">灵魂注入</span>
+          </button>
+          <button data-step="2" class="step-tab-btn py-2 text-[10px] font-mono flex flex-col items-center justify-center border border-transparent hover:border-[#00ff66]/20 text-slate-400">
+            <span>NODE 2</span>
+            <span class="text-[7px] text-slate-500">人格重塑</span>
+          </button>
+          <button data-step="3" class="step-tab-btn py-2 text-[10px] font-mono flex flex-col items-center justify-center border border-transparent hover:border-[#00ff66]/20 text-slate-400">
+            <span>NODE 3</span>
+            <span class="text-[7px] text-slate-500">声音唤醒</span>
+          </button>
+          <button data-step="4" class="step-tab-btn py-2 text-[10px] font-mono flex flex-col items-center justify-center border border-transparent hover:border-[#00ff66]/20 text-slate-400">
+            <span>NODE 4</span>
+            <span class="text-[7px] text-slate-500">记忆编织</span>
+          </button>
+          <button data-step="5" class="step-tab-btn py-2 text-[10px] font-mono flex flex-col items-center justify-center border border-transparent hover:border-[#00ff66]/20 text-slate-400">
+            <span>NODE 5</span>
+            <span class="text-[7px] text-slate-500">身躯降临</span>
+          </button>
+        </div>
+
+        <!-- ACTIVE STEP NODE CONTENT -->
+        <div class="relative bg-[#05050a] border border-[#00ff66]/30 p-4 rounded min-h-[420px] flex flex-col justify-between" id="step-content-container">
+          
+          <!-- Loading Radar Pulse overlay when switching nodes -->
+          <div id="step-node-radar" class="absolute inset-0 bg-[#05050a]/95 flex flex-col items-center justify-center z-20 opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="radar-ping-ring"></div>
+            <span class="text-[9px] font-mono text-[#00ff66] tracking-widest mt-4">CALIBRATING NEURAL SECTOR SYNC...</span>
+          </div>
+
+          <!-- NODE 1: API Service Authorization (灵魂注入) -->
+          <div id="wizard-step-1" class="wizard-step-panel flex flex-col justify-between h-full space-y-4">
+            <div>
+              <div class="flex justify-between items-start border-b border-[#00ff66]/20 pb-2">
+                <h4 class="font-orbitron text-xs text-[#ffffff] font-bold flex items-center gap-1.5">
+                  <span class="text-[#00ff66]">NODE 1.</span> API Authorization // 灵魂注入
+                </h4>
+                <span class="text-[8px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 border border-emerald-500/20 rounded">LEVEL 01</span>
+              </div>
+              
+              <!-- Location Tips Guidance -->
+              <div class="mt-2.5 p-2 bg-[#0d2216]/50 border border-emerald-500/30 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5"></i>
+                <div>
+                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请在右侧网页的左侧菜单，找到并进入 <span class="text-white underline font-bold">"Providers" (服务来源)</span> 配置项，点击您的首选 API 服务提供商进行授权。
+                </div>
+              </div>
+
+              <!-- Explicit Checklists -->
+              <div class="mt-3 space-y-2">
+                <span class="text-[8px] font-mono text-slate-400 block uppercase tracking-wider">[ CONFIGURATION CHECKLIST ]</span>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-api-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">在 Providers 页签中找到 API 密钥设置栏</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-api-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">生成或输入合法的 Moeru / Claude / OpenAI API Key</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-api-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">保存设置，并准备启动下方的神经链接测试</span>
+                </label>
+              </div>
+
+              <!-- Interactive Simulator Component: Connection Tester Widget with standard cyberpunk status LEDs -->
+              <div class="mt-4 p-3 bg-[#0a0e14] border border-[#00ff66]/20 rounded">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-[8px] font-mono text-slate-400 uppercase">[ NEURAL CONNECTION TEST PANEL ]</span>
+                  <div class="flex items-center gap-1.5">
+                    <span id="led-disconnected" class="w-2.5 h-2.5 rounded-full bg-red-600 shadow-[0_0_6px_rgba(239,68,68,0.7)]"></span>
+                    <span id="led-authorizing" class="w-2.5 h-2.5 rounded-full bg-yellow-500/30"></span>
+                    <span id="led-secured" class="w-2.5 h-2.5 rounded-full bg-emerald-500/30"></span>
+                  </div>
+                </div>
+
+                <div class="flex gap-2">
+                  <input type="password" id="sim-api-key-node1" placeholder="sk-moeru_simulation_test_key..." class="flex-1 bg-[#05050b] border border-[#00ff66]/30 text-[9px] font-mono px-2 py-1 text-[#00ff66] placeholder-[#00ff66]/20 focus:outline-none focus:border-[#00ff66]">
+                  <button id="sim-test-conn-node1-btn" class="bg-[#00ff66]/20 hover:bg-[#00ff66] hover:text-black border border-[#00ff66] text-[#00ff66] font-mono text-[9px] px-3 py-1 transition-all">
+                    INITIATE
+                  </button>
+                </div>
+                
+                <div id="sim-node1-result" class="text-[9px] font-mono text-slate-400 mt-2 p-1.5 bg-[#05050b] rounded border border-slate-900 hidden">
+                  <!-- dynamic result text -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NODE 2: Persona & Character Card V3 Integration (人格重塑) -->
+          <div id="wizard-step-2" class="wizard-step-panel flex flex-col justify-between h-full space-y-4 hidden">
+            <div>
+              <div class="flex justify-between items-start border-b border-[#00ff66]/20 pb-2">
+                <h4 class="font-orbitron text-xs text-[#ffffff] font-bold flex items-center gap-1.5">
+                  <span class="text-[#00ff66]">NODE 2.</span> Persona Re-engineering // 人格重塑
+                </h4>
+                <span class="text-[8px] bg-indigo-500/10 text-indigo-400 px-1.5 py-0.5 border border-indigo-500/20 rounded">LEVEL 02</span>
+              </div>
+
+              <!-- Location Tips Guidance -->
+              <div class="mt-2.5 p-2 bg-[#0d2216]/50 border border-emerald-500/30 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5"></i>
+                <div>
+                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请在右侧网页顶端或设置中点击进入 <span class="text-white underline font-bold">"Character Profile" (角色卡/档案栏)</span> 展开人设编辑。
+                </div>
+              </div>
+
+              <!-- Checklists -->
+              <div class="mt-3 space-y-2">
+                <span class="text-[8px] font-mono text-slate-400 block uppercase tracking-wider">[ CONFIGURATION CHECKLIST ]</span>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-char-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">填入角色设定姓名 [Airi]</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-char-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">配置自定义 System Prompt 或 Greeting 欢迎词</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-char-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">或在此拖拽直接预览 Tavern V3 PNG 卡片参数</span>
+                </label>
+              </div>
+
+              <!-- Interactive Drag and Drop Tavern V3 character card parser -->
+              <div id="v3-drag-zone" class="mt-4 border-2 border-dashed border-[#00ff66]/30 hover:border-[#00ff66] bg-[#0c140e]/40 p-4 text-center rounded cursor-pointer transition-all">
+                <i data-lucide="upload-cloud" class="w-8 h-8 text-[#00ff66] mx-auto mb-1 animate-pulse"></i>
+                <p class="text-[10px] font-mono text-white">点击或拖拽 AIRI_SOUL_CARD.PNG / JSON 至此</p>
+                <p class="text-[8px] text-slate-500 mt-0.5">PARSABLE METRIC SPECIFICATION V3</p>
+              </div>
+
+              <div id="v3-parsed-hologram" class="mt-3 p-2 bg-[#05050b] border border-[#00ff66]/40 rounded hidden">
+                <div class="flex items-center gap-2 text-[9px] font-mono text-[#00ff66] mb-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-ping"></span>
+                  <span>GLOWING NEON HOLOGRAM PARSED DATA:</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-[9px] font-mono text-slate-300 bg-[#0a0e14] p-2 rounded">
+                  <div>Name: <span class="text-white font-bold" id="parse-name">Airi</span></div>
+                  <div>Greeting: <span class="text-[#00ff66]" id="parse-greet">"TSUNDERE AI ACTIVATED"</span></div>
+                  <div class="col-span-2 text-[8px] text-slate-400">System Prompt: <span class="text-white" id="parse-prompt">"Airi is a tsundere companion..."</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NODE 3: Voice & TTS Co-processing (声音唤醒) -->
+          <div id="wizard-step-3" class="wizard-step-panel flex flex-col justify-between h-full space-y-4 hidden">
+            <div>
+              <div class="flex justify-between items-start border-b border-[#00ff66]/20 pb-2">
+                <h4 class="font-orbitron text-xs text-[#ffffff] font-bold flex items-center gap-1.5">
+                  <span class="text-[#00ff66]">NODE 3.</span> Voice & TTS Engine // 声音唤醒
+                </h4>
+                <span class="text-[8px] bg-pink-500/10 text-pink-400 px-1.5 py-0.5 border border-pink-500/20 rounded">LEVEL 03</span>
+              </div>
+
+              <!-- Location Tips Guidance -->
+              <div class="mt-2.5 p-2 bg-[#0d2216]/50 border border-emerald-500/30 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5"></i>
+                <div>
+                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请在右侧找到 <span class="text-white underline font-bold">"Voice Settings" (声音设置)</span> 或 <span class="text-white underline font-bold">"TTS" 发声机制</span> 区，设置声音引擎并输入音色 ID。
+                </div>
+              </div>
+
+              <!-- Checklists -->
+              <div class="mt-3 space-y-2">
+                <span class="text-[8px] font-mono text-slate-400 block uppercase tracking-wider">[ CONFIGURATION CHECKLIST ]</span>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-voice-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">选择合适的 TTS 语音引擎 (ElevenLabs/Minimax)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-voice-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">设定发声模型音色 ID 以及多语言(日/中)设置</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-voice-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">通过下方面板调节并触发合成试听与波形监控</span>
+                </label>
+              </div>
+
+              <!-- Sliders & Pre-listen voice with visualizer -->
+              <div class="mt-4 p-3 bg-[#0a0e14] border border-[#00ff66]/20 rounded flex flex-col gap-3">
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="flex flex-col gap-1">
+                    <span class="text-[8px] font-mono text-slate-400 uppercase">SPEECH RATE</span>
+                    <input type="range" id="speech-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" class="w-full bg-[#05050b] border border-slate-800">
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-[8px] font-mono text-slate-400 uppercase">PITCH COEF</span>
+                    <input type="range" id="speech-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" class="w-full bg-[#05050b] border border-slate-800">
+                  </div>
+                </div>
+
+                <button id="node3-voice-test-btn" class="w-full bg-[#00ff66]/20 hover:bg-[#00ff66] hover:text-black border border-[#00ff66] text-[#00ff66] text-[10px] font-mono py-1.5 rounded transition-all flex items-center justify-center gap-1.5">
+                  <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                  // PRE-LISTEN INTEGRATION VOICE (声能试听)
+                </button>
+
+                <!-- Oscilloscope Dynamic Visualizer Canvas -->
+                <div class="bg-[#05050b] h-12 rounded border border-emerald-500/20 overflow-hidden relative">
+                  <canvas id="node3-oscilloscope" class="w-full h-full block"></canvas>
+                  <div class="absolute bottom-1 right-2 text-[7px] text-[#00ff66]/60 font-mono">SYS_OSCILLOSCOPE_STREAM</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NODE 4: Dynamic Memory Matrix (记忆编织) -->
+          <div id="wizard-step-4" class="wizard-step-panel flex flex-col justify-between h-full space-y-4 hidden">
+            <div>
+              <div class="flex justify-between items-start border-b border-[#00ff66]/20 pb-2">
+                <h4 class="font-orbitron text-xs text-[#ffffff] font-bold flex items-center gap-1.5">
+                  <span class="text-[#00ff66]">NODE 4.</span> Memory Matrix // 记忆编织
+                </h4>
+                <span class="text-[8px] bg-yellow-500/10 text-yellow-400 px-1.5 py-0.5 border border-yellow-500/20 rounded">LEVEL 04</span>
+              </div>
+
+              <!-- Location Tips Guidance -->
+              <div class="mt-2.5 p-2 bg-[#0d2216]/50 border border-emerald-500/30 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5"></i>
+                <div>
+                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请在右侧网页中点击并启用 <span class="text-white underline font-bold">"Memory settings" (记忆库配置)</span> 长期向量记忆与对话遗忘阈值。
+                </div>
+              </div>
+
+              <!-- Checklists -->
+              <div class="mt-3 space-y-2">
+                <span class="text-[8px] font-mono text-slate-400 block uppercase tracking-wider">[ CONFIGURATION CHECKLIST ]</span>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">开启 Long-Term Vector Database 存储</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">配置 Memory Context Token Limits</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-mem-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">调高下方滑动条来观察短期和长期神经记忆连接</span>
+                </label>
+              </div>
+
+              <!-- Dynamic memory vector mesh canvas panel -->
+              <div class="mt-4 p-3 bg-[#0a0e14] border border-[#00ff66]/20 rounded flex flex-col gap-2">
+                <div class="flex justify-between items-center text-[9px] font-mono mb-1">
+                  <span class="text-slate-300">Memory Solidification Density:</span>
+                  <span id="matrix-density-val" class="text-[#00ff66] font-bold">12</span>
+                </div>
+                <input type="range" id="node4-matrix-slider" min="4" max="40" step="1" value="12" class="w-full h-1 bg-[#05050b] border border-emerald-500/40 appearance-none outline-none cursor-pointer">
+                
+                <div class="h-24 bg-[#05050b] rounded border border-emerald-500/20 relative overflow-hidden mt-1">
+                  <canvas id="node4-memory-mesh" class="w-full h-full block"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NODE 5: Live2D/VRM Materialization (身躯降临) -->
+          <div id="wizard-step-5" class="wizard-step-panel flex flex-col justify-between h-full space-y-4 hidden">
+            <div>
+              <div class="flex justify-between items-start border-b border-[#00ff66]/20 pb-2">
+                <h4 class="font-orbitron text-xs text-[#ffffff] font-bold flex items-center gap-1.5">
+                  <span class="text-[#00ff66]">NODE 5.</span> Vessel Materialization // 身躯降临
+                </h4>
+                <span class="text-[8px] bg-red-500/10 text-red-400 px-1.5 py-0.5 border border-red-500/20 rounded">LEVEL 05</span>
+              </div>
+
+              <!-- Location Tips Guidance -->
+              <div class="mt-2.5 p-2 bg-[#0d2216]/50 border border-emerald-500/30 rounded text-[9px] font-mono flex items-start gap-1.5">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5"></i>
+                <div>
+                  <span class="text-[#00ff66] font-bold">定位指示:</span> 请在右侧找到 <span class="text-white underline font-bold">"Avatar settings" (看板娘设置)</span> 装载 Live2D 配置文件 (.model3.json) 或导入 3D VRM 角色容器模型。
+                </div>
+              </div>
+
+              <!-- Checklists -->
+              <div class="mt-3 space-y-2">
+                <span class="text-[8px] font-mono text-slate-400 block uppercase tracking-wider">[ CONFIGURATION CHECKLIST ]</span>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-ves-1" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">上传 .vrm 或 Live2D 配置文件模型</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-ves-2" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">启动并在下方面板预览眼部及面部传感器交互</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-1.5 bg-[#08080f] rounded border border-slate-800 hover:border-emerald-500/30 cursor-pointer transition-colors">
+                  <input type="checkbox" id="chk-ves-3" class="node-chk rounded border-emerald-500/50 bg-[#05050b] text-emerald-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5">
+                  <span class="text-[10px] font-mono text-slate-300">校正视角追踪与姿态响应系数</span>
+                </label>
+              </div>
+
+              <!-- Simulated 3D Mock Vector face calibration tracking block -->
+              <div class="mt-4 p-3 bg-[#0a0e14] border border-[#00ff66]/20 rounded flex flex-col gap-2">
+                <span class="text-[8px] font-mono text-slate-400 block uppercase">[ MOCK 3D VRM COORDINATES TRACKING PREVIEW ]</span>
+                
+                <div class="grid grid-cols-3 gap-2 text-[8px] font-mono text-[#00ff66]">
+                  <div class="bg-[#05050b] p-1 border border-slate-900 rounded">Yaw: <span id="vrm-yaw" class="text-white">0.00</span></div>
+                  <div class="bg-[#05050b] p-1 border border-slate-900 rounded">Pitch: <span id="vrm-pitch" class="text-white">0.00</span></div>
+                  <div class="bg-[#05050b] p-1 border border-slate-900 rounded">Roll: <span id="vrm-roll" class="text-white">0.00</span></div>
+                </div>
+
+                <div class="h-28 bg-[#05050b] rounded border border-emerald-500/20 relative flex items-center justify-center overflow-hidden">
+                  <!-- Radar circle visual mimicking facial eye tracking coordinates -->
+                  <div class="absolute w-20 h-20 border border-emerald-500/10 rounded-full flex items-center justify-center">
+                    <div class="absolute w-12 h-12 border border-emerald-500/20 rounded-full flex items-center justify-center">
+                      <div id="tracking-cursor-dot" class="w-2.5 h-2.5 rounded-full bg-[#00ff66] shadow-[0_0_8px_#00ff66] transition-all duration-75"></div>
+                    </div>
+                  </div>
+                  <div class="absolute bottom-1 left-2 text-[7px] text-slate-500 font-mono">EYE-TRACKING COORDINATES RESPONSIVENESS</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom controls integrated inside the step container -->
+          <div class="flex justify-between items-center pt-3 border-t border-[#00ff66]/20 mt-4">
+            <button id="prev-step-btn" class="px-3 py-1 bg-transparent hover:bg-[#00ff66]/10 border border-[#00ff66]/30 text-[#00ff66] font-mono text-[10px] rounded transition-all disabled:opacity-30 disabled:pointer-events-none">
+              &lt;&lt; PREV
+            </button>
+            <div class="text-[9px] font-mono text-[#00ff66]/60">
+              PROGRESS COMPILATION
+            </div>
+            <button id="next-step-btn" class="px-3 py-1 bg-[#00ff66] hover:bg-white text-black font-orbitron font-bold text-[10px] rounded transition-all shadow-[0_0_8px_rgba(0,255,102,0.3)]">
+              NEXT &gt;&gt;
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Live Vitals HUD -->
+      <div class="cyber-panel p-4" style="--corner: 15px;">
+        <h3 class="font-orbitron text-xs text-[#00ff66] mb-4 tracking-wider flex items-center justify-between">
+          <span>// DEPLOYMENT_TELEMETRY</span>
+          <i data-lucide="activity" class="w-3.5 h-3.5 text-[#00ff66] animate-pulse"></i>
+        </h3>
+
+        <!-- Realtime Spectrum visualizer canvas -->
+        <div class="relative bg-[#05050a] border border-[#00ff66]/30 p-1 rounded overflow-hidden mb-3">
+          <canvas id="waveform-canvas" class="w-full h-16 block"></canvas>
+          <div class="absolute top-1 left-2 text-[8px] font-mono text-[#00ff66]/40">NEURAL STICKER INTERACTION STREAM</div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mb-2">
+          <div class="p-2 border border-[#00ff66]/20 bg-[#0e0d1a] rounded text-center">
+            <span class="block text-[8px] text-slate-400 font-mono uppercase">Completed Tasks</span>
+            <span id="realtime-task-completed" class="text-[#00ff66] font-orbitron font-bold text-xs">0 / 15</span>
+          </div>
+          <div class="p-2 border border-[#00ff66]/20 bg-[#0e0d1a] rounded text-center">
+            <span class="block text-[8px] text-slate-400 font-mono uppercase">Link Latency</span>
+            <span id="latency-val" class="text-[#00ff66] font-orbitron font-bold text-xs">42ms</span>
+          </div>
+        </div>
+
+        <!-- Metric SOUL_SYNC -->
+        <div class="mb-4">
+          <div class="flex justify-between text-[11px] font-mono mb-1.5">
+            <span class="text-[#00ff66]/90 flex items-center gap-1">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#00ff66]"></i> ROADMAP SYNCHRONIZATION RATE
+            </span>
+            <span class="neon-text-green font-bold tracking-widest" id="soul-sync-val">0.0%</span>
+          </div>
+          <div class="h-2.5 bg-[#05050b] border border-[#00ff66]/40 p-[2px] relative overflow-hidden">
+            <div id="soul-sync-bar" class="h-full bg-gradient-to-r from-[#00ff66] to-[#05050b] shadow-[0_0_8px_#00ff66] transition-all duration-500" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Systems Terminal HUD -->
+      <div class="cyber-panel p-4 flex-1 flex flex-col font-mono text-[10px]" style="--corner: 12px; min-h-[120px];">
+        <div class="text-[#ffea00] font-bold border-b border-[#ffea00]/30 pb-1.5 mb-2 flex justify-between items-center">
+          <span>[SYS_DIAGNOSTIC_TERMINAL_LOG]</span>
+          <span id="gpu-temp-badge" class="text-[#00ff66]">GPU: 54°C</span>
+        </div>
+        <div class="terminal-feed flex-1 overflow-y-auto custom-scrollbar space-y-1.5 text-slate-400 max-h-[140px] pr-1" id="terminal-feed">
+          <!-- Live sequential diagnostic logs injected via JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT COLUMN: AIRI.MOERU.AI EMBEDDED CONSOLE (7/12) -->
+    <section class="lg:col-span-7 flex flex-col h-full overflow-hidden">
+      
+      <!-- Top secure iframe wrapper headers -->
+      <div class="cyber-panel flex-1 flex flex-col overflow-hidden" style="--corner: 20px; padding: 1px;">
+        
+        <!-- Frame header interface details -->
+        <div class="iframe-header flex flex-col sm:flex-row justify-between items-stretch sm:items-center px-4 py-3 bg-[#0e0d1a] border-b border-[#00ff66]/20 gap-2">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#00ff66] shadow-[0_0_8px_#00ff66] animate-pulse"></span>
+            <span class="font-orbitron text-xs tracking-widest text-[#ffffff] font-semibold">
+              AIRI_MOERU_AI_SETTINGS
+            </span>
+          </div>
+          <div class="flex items-center justify-between sm:justify-end space-x-3">
+            <span class="network-badge online text-[9px] text-[#00ff66] border border-[#00ff66]/30 px-2 py-0.5 bg-[#00ff66]/10 font-mono flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-3 h-3 text-[#00ff66]"></i> TUNNEL: SECURE
+            </span>
+            <span class="text-[9px] font-mono text-[#00ff66]/40">TARGET_NODE: AIRI.MOERU.AI</span>
+          </div>
+        </div>
+
+        <!-- Embedded Iframe Container -->
+        <div class="iframe-wrapper flex-1 bg-[#05050b] relative min-h-[400px]">
+          <!-- Real-time Loading Mask Overlay with sci-fi progress diagnostics -->
+          <div id="iframe-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-[#070712] z-40 transition-opacity duration-700 p-6 text-center">
+            <div class="relative mb-6">
+              <div class="loading-scanner border-2 border-t-transparent border-b-transparent border-[#00ff66] rounded-full w-16 h-16 animate-spin relative">
+                <div class="absolute inset-2 border-2 border-l-transparent border-r-transparent border-[#00ff66] rounded-full animate-spin" style="animation-direction: reverse; animation-duration: 1.5s;"></div>
+              </div>
+              <div class="absolute inset-0 flex items-center justify-center text-[10px] font-mono text-[#00ff66]">98%</div>
+            </div>
+            
+            <span class="font-orbitron text-xs tracking-widest text-[#00ff66] animate-pulse mb-3 block">
+              ESTABLISHING NEURAL SYNAPSE LINK...
+            </span>
+            
+            <!-- Dynamic loaded diagnostics -->
+            <div class="neural-diagnostic-steps w-full max-w-sm text-center border border-[#00ff66]/20 bg-[#0e0d1a] p-3 rounded font-mono text-[9px] text-[#00ff66]/90 h-16 flex flex-col justify-center">
+              <div id="diagnostic-step" class="animate-pulse">SYNCHRONIZING CONFIGURATION PORT...</div>
+              <div class="text-[8px] text-slate-500 mt-1">HOST: https://airi.moeru.ai/settings</div>
+            </div>
+
+            <!-- Urgent direct action fallback instruction -->
+            <button id="skip-load-btn" class="mt-4 px-3 py-1 bg-[#00ff66]/20 border border-[#00ff66]/50 hover:bg-[#00ff66]/45 text-[#ffffff] font-mono text-[9px] tracking-wider transition-colors">
+              // INTERRUPT LINK DELAY_
+            </button>
+          </div>
+
+          <!-- The embedded Airi panel iframe -->
+          <iframe 
+            id="airi-settings-iframe"
+            src="https://airi.moeru.ai/settings" 
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="cyber-iframe w-full h-full border-none absolute inset-0">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Overpass Direct Action Control & Safe Bypass Terminal -->
+      <div class="bypass-control-bar mt-4 flex flex-col md:flex-row items-stretch md:items-center justify-between p-3 border border-[#ffea00]/30 bg-[#ffea00]/5 relative overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 97% 100%, 0% 100%);">
+        
+        <div class="flex items-center space-x-2.5 mb-2 md:mb-0">
+          <span class="w-2.5 h-2.5 bg-[#ffea00] rounded-full animate-ping flex items-center justify-center"></span>
+          <span class="text-[9px] md:text-[11px] font-mono text-[#ffea00] tracking-wider font-bold">
+            [X-FRAME SHIELD PREVENTING LOAD? USE OUT-OF-BOUNDS INTERPRETER]
+          </span>
+        </div>
+
+        <!-- Cyber neon colored Direct Link Launcher -->
+        <a href="https://airi.moeru.ai/settings" 
+           target="_blank" 
+           id="bypass-direct-link"
+           class="bypass-btn font-orbitron font-bold text-xs tracking-widest text-[#05050b] bg-[#ffea00] hover:bg-white hover:text-black px-4 py-2 transition-all shadow-[0_0_12px_rgba(255,234,0,0.5)] hover:shadow-[0_0_22px_rgba(255,255,255,0.9)] flex items-center gap-1.5 self-stretch sm:self-end md:self-auto text-center justify-center">
+          ⚡ DIRECT PROTOCOL OVERRIDE &gt;&gt;
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script type="module" src="console.js"></script>
+</body>
+</html>

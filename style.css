@@ -1,0 +1,202 @@
+:root {
+  --bg-void: #05050b;
+  --bg-panel: rgba(14, 13, 26, 0.93);
+  --color-green: #00ff66;
+  --color-purple: #bd00ff;
+  --color-warn: #ffea00;
+  --color-fault: #ff0055;
+  --font-cyber: 'Orbitron', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: var(--font-cyber);
+  background-color: var(--bg-void);
+  -webkit-font-smoothing: antialiased;
+}
+
+.crt-overlay::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.22) 50%), 
+              linear-gradient(90deg, rgba(0, 255, 102, 0.02), rgba(0, 0, 0, 0.05), rgba(0, 255, 102, 0.02));
+  z-index: 999;
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.cyber-grid {
+  position: fixed;
+  inset: 0;
+  background-image: \
+    linear-gradient(rgba(0, 255, 102, 0.018) 1px, transparent 1px),\
+    linear-gradient(90deg, rgba(0, 255, 102, 0.018) 1px, transparent 1px);\
+  background-size: 40px 40px;\
+  background-position: center;\
+  z-index: 1;\
+}
+
+.cyber-panel {
+  background: var(--bg-panel);
+  border: 1px solid rgba(0, 255, 102, 0.25);
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.03), inset 0 0 15px rgba(0, 255, 102, 0.01);
+  clip-path: polygon(
+    0 0, 
+    calc(100% - var(--corner, 15px)) 0, 
+    100% var(--corner, 15px), 
+    100% 100%, 
+    var(--corner, 15px) 100%, 
+    0 calc(100% - var(--corner, 15px))
+  );
+  backdrop-filter: blur(12px);
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cyber-panel:hover {
+  border-color: rgba(0, 255, 102, 0.45);
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.08), inset 0 0 15px rgba(0, 255, 102, 0.03);
+}
+
+.cyber-panel::after {
+  content: "AIRI_ROADMAP_DECODER";
+  position: absolute;
+  bottom: 1px;
+  right: 15px;
+  font-family: var(--font-mono);
+  font-size: 6px;
+  color: var(--color-green);
+  opacity: 0.5;
+  letter-spacing: 2px;
+}
+
+.neon-text-green {
+  text-shadow: 0 0 8px rgba(0, 255, 102, 0.8), 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.holo-scanner-sweep {
+  animation: scanning-glow 3.5s linear infinite;
+}
+
+@keyframes scanning-glow {
+  0% { top: -10px; opacity: 0; }
+  10% { opacity: 0.9; }
+  90% { opacity: 0.9; }
+  100% { top: calc(100% + 10px); opacity: 0; }
+}
+
+.holo-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 255, 102, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 102, 0.08) 1px, transparent 1px);
+  background-size: 15px 15px;
+  opacity: 0.4;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(14, 13, 26, 0.8);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-green);
+  border-radius: 9px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-purple);
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 12px;
+  background-color: var(--color-green);
+  animation: cursor-blink 0.8s infinite;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }\
+}
+
+.bypass-btn {
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.bypass-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: all 0.5s ease;
+}
+
+.bypass-btn:hover::before {
+  left: 100%;
+}
+
+.loading-scanner {
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+}
+
+.radar-ping-ring {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-green);
+  border-radius: 50%;
+  animation: radar-pulse 1s ease-out infinite;
+  position: relative;
+}
+
+@keyframes radar-pulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.speech-emitting span {
+  animation: speech-bounce 0.4s ease infinite alternate;
+}
+
+.speech-emitting span:nth-child(2) { animation-delay: 0.1s; }
+.speech-emitting span:nth-child(3) { animation-delay: 0.2s; }
+.speech-emitting span:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes speech-bounce {
+  0% { height: 4px; }
+  100% { height: 14px; }
+}
+
+/* Checklist rewarded pulse */
+.neon-glow-glitch {
+  animation: neon-glitch-anim 0.5s ease-in-out;
+}
+
+@keyframes neon-glitch-anim {
+  0%, 100% { border-color: rgba(0, 255, 102, 0.25); background: rgba(8, 8, 15, 0.9); }
+  50% { border-color: #00ff66; background: rgba(0, 255, 102, 0.2); box-shadow: 0 0 10px rgba(0, 255, 102, 0.5); }
+}
+
+@media (max-width: 1024px) {
+  body {
+    overflow-y: auto !important;
+  }
+  .console-grid {
+    height: auto !important;
+    overflow-y: visible !important;
+  }
+}
